@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'jquery/dist/jquery.min'
+import 'bootstrap/dist/js/bootstrap.min'
+
 import Sider from './Sider'
 import Header from './Header'
 
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+// import Dashboard from '../Dashboard'
 const { Content } = Layout;
 
 export default class Index extends Component {
@@ -22,6 +27,8 @@ export default class Index extends Component {
               </Breadcrumb> */}
               <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                 Content Here.
+                {/* <Dashboard /> */}
+                {/* <button className="btn btn-danger" >5555</button> */}
               </div>
             </Content>
           </Layout>
