@@ -13,10 +13,8 @@ export default class MainHeader extends Component {
   render() {
     return (
       <Header style={{textAlign: 'right',color:'white'}}>
-        <div>
-          {this.state.name} ({this.state.position})
-          <button>Logout</button>
-        </div>
+          {this.state.name} ({this.state.position}) {" "}{" "}
+          <button class="btn ant-btn-danger">Logout</button>
       </Header>
     )
   }
