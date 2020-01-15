@@ -4,6 +4,10 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
+
+const path = [
+  'dashboard' , 'managemember' , 'checkanswer' , 'confirmregistrant' , 'managegroup' , 'managebedroom' , 'checkin'
+]
 const menuName = [
   'ข้อมูลสรุป' , 'จัดการสมาชิก' , 'ตรวจคำตอบ' , 'ผู้มีสิทธิเข้าค่าย' , 'จัดกลุ่มน้อง' , 'จัดห้องนอน' , 'เช็คอิน'
 ]
@@ -20,13 +24,15 @@ export default class SiderBar extends Component {
         <Layout style={{ minHeight: '100vh' }}>
           <Sider>
             <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
               {
                 menuName.map((data , i) => {
                   return(
                     <Menu.Item key={i}>
-                      <Icon type="crown" />
-                      <span>{data}</span>
+                      <a href = {`/${path[i]}`}>
+                        <Icon type="crown" />
+                        <span>{data}</span>
+                      </a>
                     </Menu.Item>
                   )
                 })
