@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
-const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const path = [
@@ -15,41 +14,23 @@ const menuName = [
 export default class SiderBar extends Component {
   render() {
     return (
-      <Layout>
-        <Layout>
-          <Header>
-            ABC
-          </Header>
-        </Layout>
-        <Layout style={{ minHeight: '100vh' }}>
-          <Sider>
-            <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
-              {
-                menuName.map((data , i) => {
-                  return(
-                    <Menu.Item key={i}>
-                      <a href = {`/${path[i]}`}>
-                        <Icon type="crown" />
-                        <span>{data}</span>
-                      </a>
-                    </Menu.Item>
-                  )
-                })
-              }
-            </Menu>
-          </Sider>
-          <Layout>
-            <Content style={{ margin: '16px' }}>
-              {/* <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-              </Breadcrumb> */}
-              <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Content Here</div>
-            </Content>
-          </Layout>
-        </Layout>
-      </Layout>
+        <Sider>
+          <div className="logo" />
+          <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
+            {
+              menuName.map((data , i) => {
+                return(
+                  <Menu.Item key={i}>
+                    <a href = {`/${path[i]}`}>
+                      <Icon type="crown" />
+                      <span>{data}</span>
+                    </a>
+                  </Menu.Item>
+                )
+              })
+            }
+          </Menu>
+        </Sider>
     )
   }
 }
