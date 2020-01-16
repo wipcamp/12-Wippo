@@ -25,8 +25,6 @@ export default class index extends Component {
       dayjs('2020-03-12T23:59').isAfter(dayjs().format('YYYY-MM-DDTHH:mm')) ? this.updateTime() : this.stop();
     }, 1000);
   }
-// think flow register who regit camp
- 
 
   updateTime = () => {
     const datenow = dayjs().format('YYYY-MM-DDTHH:mm')
@@ -39,12 +37,6 @@ export default class index extends Component {
       hour: hoursRemaining,
       min: minutesRemaining
     })
-    // console.log(hoursRemaining)
-    // console.log(minutesRemaining)
-// datenow.diff(date2) // 20214000000 default milliseconds
-// datenow.diff(date2, 'month') // 7
-// datenow.diff(date2, 'month', true) // 7.645161290322581
-
   }
 
   render() {
