@@ -44,20 +44,21 @@ export default class index extends Component {
       <React.Fragment>
         <h1>ข้อมูลสรุป</h1>
         <Row>
-          <Div span={20} >
+          <div className="col-5">
           <PieChart />
-          </Div>
-          <Row>
-          <Div span={4} >
-            {/* วันเดือนปี */}
-            วัน {this.state.day} <br />
-            ชั่วโมง {this.state.hour} <br />
-            นาที {this.state.min}
-          </Div>
-          <Div span={4} >
-            Percent Compare 
-          </Div>
-          </Row>
+
+          </div>
+          <div className="row col-5 mr-5">
+              <div className="col-5">
+                {/* วันเดือนปี */}
+                วัน {this.state.day} <br />
+                ชั่วโมง {this.state.hour} <br />
+                นาที {this.state.min}
+              </div>
+              <div className="mt-5 col-5">
+                Percent Compare
+          </div>
+          </div>
           <Div span={24} >
           <BarChart />
           </Div>
