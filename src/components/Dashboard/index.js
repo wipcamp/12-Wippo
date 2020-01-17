@@ -42,30 +42,22 @@ export default class index extends Component {
   render() {
     return (
       <React.Fragment>
+        
         <h1>ข้อมูลสรุป</h1>
-        <Row>
-          <div className="col-5">
-          <PieChart />
-
+        <div className="row">
+          <div className="col-12 col-md-8">
+            <PieChart />
           </div>
-          <div className="row col-5 mr-5">
-              <div className="col-5">
-                {/* วันเดือนปี */}
-                วัน {this.state.day} <br />
-                ชั่วโมง {this.state.hour} <br />
-                นาที {this.state.min}
-              </div>
-              <div className="mt-5 col-5">
-                Percent Compare
+          <div className="col-12 col-md-4">
+            {/* วันเดือนปี */}
+              วัน {this.state.day} <br />
+              ชั่วโมง {this.state.hour} <br />
+              นาที {this.state.min}
           </div>
+          <div className="col-12">
+            <BarChart />
           </div>
-          <Div span={24} >
-          <BarChart />
-          </Div>
-          <Div span={24} >
-          <BarChart />
-          </Div>
-        </Row>
+        </div>
       </React.Fragment>
     )
   }
