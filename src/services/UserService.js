@@ -22,7 +22,11 @@ const userService = {
     return res
   },
   getAllUser: async() => {
-    let res = await apiUserService.get(`/user`)
+    let res = await apiUserService.get(`/users`)
+    return res
+  },
+  getDailyGraph: async() => {
+    let res = await apiUserService.get(`users?filter=graph&option=daily`)
     return res
   }
 }
