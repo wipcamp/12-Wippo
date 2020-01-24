@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import { Bar } from 'ant-design-pro/lib/Charts';
+import userService from '../../services/UserService'
+
 
 export default class BarChart extends Component {
   
   state = {
-    salesData: []
+    userData: []
   }
 
   componentDidMount(){
-    for (let i = 0; i < 12; i += 1) {
-      this.state.salesData.push({
-        x: `${i + 1}月`,
-        y: Math.floor(Math.random() * 1000) + 200,
+    this.getDailyGraph();
+  }
+
+  async getDailyGraph(){
+    let daily = await userService.getDailyGraph();
+    let data = daily.data.data;
+    console.log(data)
+    for(let i = 0 ; i < 7 ; i++){
+      this.state.userData.push({
+        x: `Day ${i + 1}`,
+        y: data[i],
       });
     }
   }
@@ -20,8 +29,8 @@ export default class BarChart extends Component {
     return (
       <Bar 
         height={200} 
-        title="销售额趋势" 
-        data={this.state.salesData} />
+        title="จำนวนคนที่ลงทะเบียนต่อวัน" 
+        data={this.state.userData} />
     )
   }
 }
