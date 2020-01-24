@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import dayjs from 'dayjs'
 import PieChart from './PieChart'
 import BarChart from './BarChart'
+import HourlyGraph from './HourlyGraph'
 
 const Div = styled(Col)`
   background-color: #FFF;
@@ -56,6 +57,7 @@ export default class index extends Component {
           </div>
           <div className="col-12">
             <BarChart />
+            <HourlyGraph/>
           </div>
         </div>
       </React.Fragment>
