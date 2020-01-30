@@ -5,12 +5,11 @@ import dayjs from 'dayjs'
 import PieChart from './PieChart'
 import DayGraph from './DayGraph'
 import HourlyGraph from './HourlyGraph'
+import userService from '../../services/UserService';
 
 const Div = styled(Col)`
   background-color: #FFF;
 `
-
-
 
 export default class index extends Component {
 
@@ -18,11 +17,13 @@ export default class index extends Component {
     day:0,
     hour:0,
     min:0,
-    percent:0,
+    updateCount:0,
+    updateStatus: 'green',
   }
 
   componentDidMount(){
     this.updateTime()
+    this.getUserUpdateCount()
     this.interval = setInterval(() => {
       dayjs('2020-03-12T23:59').isAfter(dayjs().format('YYYY-MM-DDTHH:mm')) ? this.updateTime() : this.stop();
     }, 1000);
@@ -41,11 +42,44 @@ export default class index extends Component {
     })
   }
 
+  async getUserUpdateCount(){
+    let count = await userService.getUserUpdateCount()
+    count = count.data.data[0].count
+    if(count >= 0){
+      this.setState({
+        updateCount : 'ผู้สมัครเพิ่มขึ้นจำนวน ' +  count + ' คน',
+        updateStatus : 'green'
+      })
+    } 
+    else if(count == 0){
+      if(count >= 0){
+        this.setState({
+          updateCount : 'ผู้สมัครจำนวนเท่ากับเมื่อวาน',
+          updateStatus : 'black'
+        })
+      } 
+    }
+    else if(count == 0){
+      if(count >= 0){
+        this.setState({
+          updateCount : 'ผู้สมัครลดลงจำนวน ' + count + ' คน',
+          updateStatus : 'red'
+        })
+      }
+    } else{
+      this.setState({
+        updateCount : 'Error Cannot get count.',
+        updateStatus : 'red'
+      })
+    }
+    
+  }
+  
   render() {
     return (
       <React.Fragment>
         <div className="container">
-          <h1 style={{marginTop: "30px"}}>ข้อมูลสรุป</h1>
+          <h3 style={{marginTop: "30px"}}>ข้อมูลสรุป</h3>
           <div className="row">
             <div className="col-12 col-md-8">
               <div className="card mb-3">
@@ -83,14 +117,14 @@ export default class index extends Component {
             <div className="col-12 col-md-4">
               <div className="card mb-3">
                 <div className="card-body">
-                  <h5 class="card-title">เหลือเวลาอีก</h5>
+                  <h5 className="card-title">เหลือเวลาอีก</h5>
                   {this.state.day} วัน {this.state.hour} ชั่วโมง {this.state.min} นาที  
                 </div>
               </div>
               <div className="card">
                 <div className="card-body">
-                  <h5 class="card-title">Google Rankings</h5>
-                  {this.state.percent}  
+                  <h5 className="card-title">Google Rankings</h5>
+                  <h6 style={{ color: `${ this.state.updateStatus }` }}> {this.state.updateCount}</h6>
                 </div>
               </div>
             </div>
