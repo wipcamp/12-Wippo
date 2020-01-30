@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd';
+import { Card } from 'antd';
 import dayjs from 'dayjs'
 import PieChart from './PieChart'
-import BarChart from './BarChart'
+import DayGraph from './DayGraph'
 import HourlyGraph from './HourlyGraph'
 
 const Div = styled(Col)`
@@ -43,21 +44,32 @@ export default class index extends Component {
   render() {
     return (
       <React.Fragment>
-        
         <h1>ข้อมูลสรุป</h1>
         <div className="row">
           <div className="col-12 col-md-8">
-            <PieChart />
+            <div className="card">
+              <div className="card-body">
+                <PieChart />
+              </div>
+            </div>
           </div>
           <div className="col-12 col-md-4">
-            {/* วันเดือนปี */}
+            เหลือเวลาอีก
               วัน {this.state.day} <br />
               ชั่วโมง {this.state.hour} <br />
               นาที {this.state.min}
           </div>
           <div className="col-12">
-            <BarChart />
-            <HourlyGraph/>
+            <div className="card">
+              <div className="card-body">
+                <DayGraph />
+              </div>
+            </div>
+            <div className="card">
+              <div className="card-body">
+                <HourlyGraph/>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>
