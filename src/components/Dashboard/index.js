@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd';
-import { Card } from 'antd';
 import dayjs from 'dayjs'
 import PieChart from './PieChart'
 import DayGraph from './DayGraph'
