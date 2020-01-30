@@ -1,33 +1,43 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const { Header, Content, Sider } = Layout;
 
-const path = [
-  'dashboard' , 'managemember' , 'checkanswer' , 'confirmregistrant' , 'managegroup' , 'managebedroom' , 'checkin'
-]
-const menuName = [
-  'ข้อมูลสรุป' , 'จัดการสมาชิก' , 'ตรวจคำตอบ' , 'ผู้มีสิทธิเข้าค่าย' , 'จัดกลุ่มน้อง' , 'จัดห้องนอน' , 'เช็คอิน'
-]
+
 
 export default class SiderBar extends Component {
+  state = {
+    menu : [
+      { path : 'dashboard' , name : 'ข้อมูลสรุป'},
+      { path : 'managemember' , name : 'จัดการสมาชิก'},
+      { path : 'checkanswer' , name : 'ตรวจคำตอบ'},
+      { path : 'confirmregistrant' , name : 'ผู้มีสิทธิเข้าค่าย'},
+      { path : 'managegroup' , name : 'จัดกลุ่มน้อง'},
+      { path : 'managebedroom' , name : 'จัดห้องนอน'},
+      { path : 'checkin' , name : 'เช็คอิน'},
+    ]
+  }
+  
   render() {
     return (
         <Sider>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
             {
-              menuName.map((data , i) => {
-                return(
-                  <Menu.Item key={i}>
-                    <a href = {`/${path[i]}`}>
+              this.state.menu.map((data , i) => (
+                <Menu.Item key={i}>
+                    <Link to = {`/${data.path}`}>
                       <Icon type="crown" />
-                      <span>{data}</span>
-                    </a>
+                      <span>{data.name}</span>
+                    </Link>
                   </Menu.Item>
-                )
-              })
+              ))
             }
           </Menu>
         </Sider>
