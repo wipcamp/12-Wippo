@@ -51,7 +51,23 @@ export default class index extends Component {
             <div className="col-12 col-md-8">
               <div className="card mb-3">
                 <div className="card-body">
-                  <PieChart />
+                  <div className="row align-items-center">
+                    <div className="col-3">
+                      <PieChart />
+                    </div>
+                    <div className="col-3 text-center">
+                      บันทึกข้อมูลส่วนตัว
+                      <h3>100</h3>
+                    </div>
+                    <div className="col-3 text-center">
+                      ตอบคำถามแล้ว
+                      <h3>100</h3>
+                    </div>
+                    <div className="col-3 text-center">
+                      ส่งใบสมัครเรียบร้อย
+                      <h3>100</h3>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="card mb-3">
