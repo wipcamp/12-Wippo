@@ -6,8 +6,8 @@ const { Header } = Layout;
 export default class MainHeader extends Component {
   state = {
     wipId: 120000,
-    position: 'ประธานค่าย',
-    name: 'โตโต้ซัง'
+    position: 'รองประธานค่าย',
+    name: 'น้องคนเมษลอยได้'
   }
 
   render() {
