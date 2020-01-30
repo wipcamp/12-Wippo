@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 export default class HourlyGraph extends Component {
-
   state = {
     userData: [],
     date: null
@@ -29,7 +28,6 @@ export default class HourlyGraph extends Component {
         y: hourly[i],
       });
     }
-    console.log(currentDate)
   }
 
   setDateState(date){
@@ -46,12 +44,15 @@ export default class HourlyGraph extends Component {
   render() {
     return (
       <div>
-      <DatePicker selected={this.state.date} onChange={date => this.setDateState(date)} /> 
-      <Bar 
-        height={200} 
-        title="จำนวนคนที่ลงทะเบียนต่อวัน" 
-        data={this.state.userData} 
-      />
+        <h5 className="card-title text-center">จำนวนคนที่ลงทะเบียน (แบ่งตามเวลา)</h5>
+        <div className="text-right">
+          <DatePicker selected={this.state.date} onChange={date => this.setDateState(date)} /> 
+        </div>
+        <Bar 
+          height={200} 
+          // title="จำนวนคนที่ลงทะเบียนต่อวัน" 
+          data={this.state.userData} 
+        />
       </div>
     )
   }
