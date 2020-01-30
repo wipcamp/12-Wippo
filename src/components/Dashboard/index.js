@@ -18,7 +18,8 @@ export default class index extends Component {
   state = {
     day:0,
     hour:0,
-    min:0
+    min:0,
+    percent:0,
   }
 
   componentDidMount(){
@@ -44,30 +45,38 @@ export default class index extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>ข้อมูลสรุป</h1>
-        <div className="row">
-          <div className="col-12 col-md-8">
-            <div className="card">
-              <div className="card-body">
-                <PieChart />
+        <div className="container">
+          <h1 style={{marginTop: "30px"}}>ข้อมูลสรุป</h1>
+          <div className="row">
+            <div className="col-12 col-md-8">
+              <div className="card mb-3">
+                <div className="card-body">
+                  <PieChart />
+                </div>
+              </div>
+              <div className="card mb-3">
+                <div className="card-body">
+                  <HourlyGraph/>
+                </div>
+              </div>
+              <div className="card mb-3">
+                <div className="card-body">
+                  <DayGraph />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-12 col-md-4">
-            เหลือเวลาอีก
-              วัน {this.state.day} <br />
-              ชั่วโมง {this.state.hour} <br />
-              นาที {this.state.min}
-          </div>
-          <div className="col-12">
-            <div className="card">
-              <div className="card-body">
-                <DayGraph />
+            <div className="col-12 col-md-4">
+              <div className="card mb-3">
+                <div className="card-body">
+                  <h5 class="card-title">เหลือเวลาอีก</h5>
+                  {this.state.day} วัน {this.state.hour} ชั่วโมง {this.state.min} นาที  
+                </div>
               </div>
-            </div>
-            <div className="card">
-              <div className="card-body">
-                <HourlyGraph/>
+              <div className="card">
+                <div className="card-body">
+                  <h5 class="card-title">Google Rankings</h5>
+                  {this.state.percent}  
+                </div>
               </div>
             </div>
           </div>
