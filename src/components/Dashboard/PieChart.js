@@ -6,15 +6,12 @@ import userService from '../../services/UserService'
 export default class PieChart extends Component {
   state = {
     userData : [
-    {
-      x: "สมัครเสร็จแล้ว",
-      y: 10
-    },
-    {
-      x: "ยังสมัครไม่เสร็จ",
-      y: 300
-    }
-    ]
+      {
+        x: "ในระบบ",
+        y: 0
+      }
+    ],
+    count : null,
   }
 
   componentDidMount(){
@@ -25,29 +22,34 @@ export default class PieChart extends Component {
     let allUser = await userService.getAllUser();
     let data = allUser.data.data;
     console.log(data)
-    this.state.userData.push({
-      x: "ในระบบ",
-      y: data.length,
-    });
+    this.setState({
+      userData : [
+        {
+          x: "ในระบบ",
+          y: data.length
+        }
+      ],
+      count : data.length
+    })
   }
   render() {
     return (
       <Pie
-        hasLegend
+        // hasLegend
         title="Bar Chart"
-        // subTitle="ssss"
-        // total={() => (
-        //   <span
-        //     dangerouslySetInnerHTML={{
-        //       __html: this.state.userData.reduce((pre, now) => now.y + pre, 0)
-        //     }}
-        //   />
-        // )}
+        total={() => (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: this.state.userData.reduce((pre, now) => now.y + pre, 0)
+            }}
+          />
+        )}
+        subTitle={'ในระบบ'} 
         data={this.state.userData}
-        // valueFormat={val => (
-        //   <span dangerouslySetInnerHTML={{ __html: val }} />
-        // )}
-        height={294}
+        valueFormat={val => (
+          <span dangerouslySetInnerHTML={{ __html: val }} />
+        )}
+        height={200}
       />
     )
   }
