@@ -25,8 +25,8 @@ const userService = {
     let res = await apiUserService.get(`/users`)
     return res
   },
-  getDailyGraph: async() => {
-    let res = await apiUserService.get(`users?filter=graph&option=daily`)
+  getDailyGraph: async(date) => {
+    let res = await apiUserService.get(`users?filter=graph&option=daily&date=${date}`)
     return res
   },
   getHourlyGraph: async(date) => {
