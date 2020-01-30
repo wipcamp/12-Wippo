@@ -32,6 +32,10 @@ const userService = {
   getHourlyGraph: async(date) => {
     let res = await apiUserService.get(`users?filter=graph&option=hourly&date=${date}`)
     return res
+  },
+  getUserUpdateCount: async() =>{
+    let res = await apiUserService.get(`users?filter=update`)
+    return res
   }
 }
 
