@@ -5,9 +5,11 @@ import 'bootstrap/dist/js/bootstrap.min'
 
 import Sider from './Sider'
 import Header from './Header'
+import ViewRegistrant from '../ViewRegistrant'
 
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-// import Dashboard from '../Dashboard'
+import Dashboard from '../Dashboard'
+
 const { Content } = Layout;
 
 export default class Index extends Component {
@@ -26,9 +28,10 @@ export default class Index extends Component {
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
               </Breadcrumb> */}
               <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                Content Here.
-                {/* <Dashboard /> */}
+                
                 {/* <button className="btn btn-danger" >5555</button> */}
+                <Dashboard />
+                {/* <ViewRegistrant /> */}
               </div>
             </Content>
           </Layout>
