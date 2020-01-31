@@ -7,7 +7,7 @@ import {
 import Dashboard from './components/Dashboard'
 import ViewRegistrant from './components/ViewRegistrant'
 import Sider from './components/Core/Sider'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout } from 'antd';
 
 const { Content } = Layout;
 
