@@ -7,7 +7,7 @@ export default class PieChart extends Component {
   state = {
     userData : [
       {
-        x: "ในระบบ",
+        x: "ผู้ใช้ในระบบ",
         y: 0
       }
     ],
@@ -25,7 +25,7 @@ export default class PieChart extends Component {
     this.setState({
       userData : [
         {
-          x: "ในระบบ",
+          x: "ผู้ใช้ในระบบ",
           y: data.length
         }
       ],
@@ -35,7 +35,6 @@ export default class PieChart extends Component {
   render() {
     return (
       <Pie
-        // hasLegend
         title="Bar Chart"
         total={() => (
           <span
@@ -44,7 +43,7 @@ export default class PieChart extends Component {
             }}
           />
         )}
-        subTitle={'ในระบบ'} 
+        subTitle={'ผู้ใช้ในระบบ'} 
         data={this.state.userData}
         valueFormat={val => (
           <span dangerouslySetInnerHTML={{ __html: val }} />
