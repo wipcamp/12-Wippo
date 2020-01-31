@@ -14,12 +14,18 @@ export default class SiderBar extends Component {
       { path : 'managegroup' , name : 'จัดกลุ่มน้อง'},
       { path : 'managebedroom' , name : 'จัดห้องนอน'},
       { path : 'checkin' , name : 'เช็คอิน'},
-    ]
+    ],
+    collapsed: false,
   }
+
+  onCollapse = collapsed => {
+    console.log(collapsed);
+    this.setState({ collapsed });
+  };
   
   render() {
     return (
-        <Sider>
+        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
             {
