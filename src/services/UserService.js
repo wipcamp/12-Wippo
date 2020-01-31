@@ -36,6 +36,10 @@ const userService = {
   getUserUpdateCount: async() =>{
     let res = await apiUserService.get(`users?filter=update`)
     return res
+  },
+  getUserInformation: async() =>{
+    let res = await apiUserService.get(`users?filter=information`)
+    return res
   }
 }
 
