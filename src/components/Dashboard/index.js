@@ -12,11 +12,13 @@ export default class index extends Component {
     min:0,
     updateCount:0,
     updateStatus: 'green',
+    information: '',
   }
 
   componentDidMount(){
     this.updateTime()
     this.getUserUpdateCount()
+    this.getInformation()
     this.interval = setInterval(() => {
       dayjs('2020-03-12T23:59').isAfter(dayjs().format('YYYY-MM-DDTHH:mm')) ? this.updateTime() : this.stop();
     }, 1000);
@@ -33,6 +35,16 @@ export default class index extends Component {
       hour: hoursRemaining,
       min: minutesRemaining
     })
+  }
+  
+  async getInformation(){
+    let data = await userService.getUserInformation()
+    data = data.data.data
+    console.log(data)
+    this.setState({
+      information: data[0]
+    })
+    console.log(this.state.information)
   }
 
   async getUserUpdateCount(){
@@ -71,20 +83,28 @@ export default class index extends Component {
               <div className="card mb-3">
                 <div className="card-body">
                   <div className="row align-items-center">
-                    <div className="col-3">
+                    <div className="col-12 col-md-3">
                       <PieChart />
                     </div>
-                    <div className="col-3 text-center">
-                      บันทึกข้อมูลส่วนตัว
-                      <h3>100</h3>
-                    </div>
-                    <div className="col-3 text-center">
-                      ตอบคำถามแล้ว
-                      <h3>100</h3>
-                    </div>
-                    <div className="col-3 text-center">
-                      ส่งใบสมัครเรียบร้อย
-                      <h3>100</h3>
+                    <div className="col-12 col-md-9 text-center">
+                      <div className="row">
+                        <div className="col-12 col-md-6 mt-3 mb-3">
+                          บันทึกข้อมูลส่วนตัว
+                          <h3>{this.state.information.registered}</h3>
+                        </div>
+                        <div className="col-12 col-md-6 mt-3 mb-3">
+                          ตอบคำถามทั่วไปแล้ว
+                          <h3>{this.state.information.generalAnswered}</h3>
+                        </div>
+                        <div className="col-12 col-md-6 mt-3 mb-3">
+                          ตอบคำถามเฉพาะสายแล้ว
+                          <h3>{this.state.information.majorAnswered}</h3>
+                        </div>
+                        <div className="col-12 col-md-6 mt-3 mb-3">
+                          ส่งเอกสารแล้ว
+                          <h3>{this.state.information.submitted}</h3>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
