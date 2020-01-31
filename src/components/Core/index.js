@@ -5,23 +5,19 @@ import 'bootstrap/dist/js/bootstrap.min'
 
 import MainRouter from '../../Router'
 import Header from './Header'
-
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import Dashboard from '../Dashboard'
-
-const { Content } = Layout;
+import { Layout } from 'antd';
 
 export default class Index extends Component {
   render() {
     return (
+      <Layout>
         <Layout>
-          <Layout>
-            <Header />
-          </Layout>
-          <Layout style={{ minHeight: '100vh' }}>
-            <MainRouter />
-          </Layout>
+          <Header />
         </Layout>
+        <Layout style={{ minHeight: '100vh' }}>
+          <MainRouter />
+        </Layout>
+      </Layout>
     )
   }
 }
