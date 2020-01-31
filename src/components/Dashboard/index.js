@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Row, Col } from 'antd';
 import dayjs from 'dayjs'
 import PieChart from './PieChart'
 import DayGraph from './DayGraph'
 import HourlyGraph from './HourlyGraph'
 import userService from '../../services/UserService';
 
-const Div = styled(Col)`
-  background-color: #FFF;
-`
-
 export default class index extends Component {
-
   state = {
     day:0,
     hour:0,
@@ -50,29 +43,22 @@ export default class index extends Component {
         updateCount : 'ผู้สมัครเพิ่มขึ้นจำนวน ' +  count + ' คน',
         updateStatus : 'green'
       })
-    } 
-    else if(count == 0){
-      if(count >= 0){
-        this.setState({
-          updateCount : 'ผู้สมัครจำนวนเท่ากับเมื่อวาน',
-          updateStatus : 'black'
-        })
-      } 
-    }
-    else if(count == 0){
-      if(count >= 0){
-        this.setState({
-          updateCount : 'ผู้สมัครลดลงจำนวน ' + count + ' คน',
-          updateStatus : 'red'
-        })
-      }
+    } else if(count === 0){
+      this.setState({
+        updateCount : 'ผู้สมัครจำนวนเท่ากับเมื่อวาน',
+        updateStatus : 'black'
+      })
+    } else if(count <= 0){
+      this.setState({
+        updateCount : 'ผู้สมัครลดลงจำนวน ' + count + ' คน',
+        updateStatus : 'red'
+      })
     } else{
       this.setState({
         updateCount : 'Error Cannot get count.',
         updateStatus : 'red'
       })
     }
-    
   }
   
   render() {
