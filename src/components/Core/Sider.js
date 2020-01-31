@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Layout, Menu , Icon } from 'antd';
+import { Link } from "react-router-dom";
 
-const { Header, Content, Sider } = Layout;
-
-
+const { Sider } = Layout;
 
 export default class SiderBar extends Component {
   state = {
