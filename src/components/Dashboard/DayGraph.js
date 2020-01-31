@@ -4,7 +4,6 @@ import userService from '../../services/UserService'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 export default class DayGraph extends Component {
   state = {
     userData: [],
@@ -13,6 +12,7 @@ export default class DayGraph extends Component {
 
   componentDidMount(){
     let date = new Date();
+    date.setDate(date.getDate() - 6)
     this.setDateState(date);
   }
 
@@ -22,9 +22,9 @@ export default class DayGraph extends Component {
     })
     let daily = await userService.getDailyGraph(date);
     let data = daily.data.data;
-    console.log(data);
     let numDate = new Date()
     numDate = this.state.date
+    
     for(let i = 0 ; i < 7 ; i++){
       let year = numDate.getFullYear();
       let month = ("0" + (numDate.getMonth() + 1)).slice(-2);
@@ -37,7 +37,6 @@ export default class DayGraph extends Component {
       numDate.setDate(numDate.getDate() + 1)
     }
     numDate.setDate(numDate.getDate() - 7)
-    
   }
 
   setDateState(date){
@@ -60,7 +59,6 @@ export default class DayGraph extends Component {
         </div>
         <Bar 
           height={200} 
-          // title="จำนวนคนที่ลงทะเบียนต่อสัปดาห์"
           data={this.state.userData} />
       </div>
     )
