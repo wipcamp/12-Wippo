@@ -1,0 +1,3 @@
+window['runConfig'] = {
+  apiUserService: //userservice
+}
