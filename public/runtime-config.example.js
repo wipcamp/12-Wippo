@@ -1,3 +1,3 @@
 window['runConfig'] = {
-  apiUserService: //userservice
+  apiUserService: '' //userservice
 }
