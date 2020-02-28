@@ -20,13 +20,13 @@ export default class index extends Component {
     this.getUserUpdateCount()
     this.getInformation()
     this.interval = setInterval(() => {
-      dayjs('2020-03-12T23:59').isAfter(dayjs().format('YYYY-MM-DDTHH:mm')) ? this.updateTime() : this.stop();
+      dayjs('2020-03-20T23:59').isAfter(dayjs().format('YYYY-MM-DDTHH:mm')) ? this.updateTime() : this.stop();
     }, 1000);
   }
 
   updateTime = () => {
     const datenow = dayjs().format('YYYY-MM-DDTHH:mm')
-    const date2 = dayjs('2020-03-12T23:59')
+    const date2 = dayjs('2020-03-20T23:59')
     let dayRemaining = Math.trunc((date2.diff(datenow, 'minute') / 60)/24) 
     let hoursRemaining = Math.trunc((date2.diff(datenow, 'minute')/60) - (dayRemaining * 24))
     let minutesRemaining = Math.ceil((date2.diff(datenow, 'minute', true)) - (((dayRemaining*24)+hoursRemaining)*60)) + 1
